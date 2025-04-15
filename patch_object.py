@@ -1,3 +1,4 @@
+import allure
 import requests
 from endpoints.base_endpoint import Endpoint
 
@@ -8,4 +9,5 @@ class PatchObject(Endpoint):
         self.response_json = self.response.json()
 
     def check_response_name(self, name):
-        assert self.response_json['name'] == name
+        with allure.step('check update object'):
+            assert self.response_json['name'] == name
